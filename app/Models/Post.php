@@ -31,10 +31,10 @@ class Post extends Model
     }
 
     public function tag(){
-        return $this->belongsToMany(Tag::class, "tag_id","id");
+        return $this->belongsToMany(Tag::class, "post_tags","post_id","tag_id");
     }
 
     public function category(){
-        return $this->belongsToMany(Category::class, "category_id","id");
+        return $this->belongsToMany(Categories::class, "post_categories","post_id","category_id");
     }
 }

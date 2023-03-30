@@ -16,6 +16,6 @@ class Tag extends Model
     protected $guarded = false;
 
     public function post(){
-        return $this->belongsToMany(Post::class,"post_id","id");
+        return $this->belongsToMany(Post::class,"post_tags","tag_id","post_id");
     }
 }
