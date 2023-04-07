@@ -23,7 +23,7 @@ class Post extends Model
     protected $guarded = false;
 
     public function comment(){
-        return $this->hasMany(Post::class, "post_id","id");
+        return $this->hasMany(Comment::class, "post_id","id");
     }
 
     public function user(){

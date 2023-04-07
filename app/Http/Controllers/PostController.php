@@ -45,11 +45,9 @@ class PostController extends Controller
             "user_id"=>["required"],
             "titles"=>["required","string"],
             "content"=>["required","string"],
-            "image_path"=>["required"],
+            "image_path"=>["required","image"],
             "published_date"=>["required","date"],
             "views_count"=>["required","integer"],
-            "likes_count"=>["required","integer"],
-            "comments_count"=>["required","integer"],
             "category_id"=>["required"],
             "tag_id"=>["required"]
         ]);
@@ -58,11 +56,11 @@ class PostController extends Controller
             "user_id"=> $request->user_id,
             "titles"=> $request->titles,
             "content"=> $request->content,
-            "image_path"=> $request->image_path,
+            "image_path"=> $request->file("image_path")->store("images","public"),
             "published_date"=> $request->published_date,
             "views_count"=> $request->views_count,
-            "likes_count"=> $request->likes_count,
-            "comments_count"=> $request->comments_count
+            "likes_count"=> 0,
+            "comments_count"=> 0
         ]);
 
         $post_id = $post->id;
@@ -81,7 +79,7 @@ class PostController extends Controller
             ]);
         }
 
-        return new PostResource($post);
+        return new PostResource(Post::find($post->id));
     }
 
     /**

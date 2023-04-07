@@ -25,6 +25,7 @@ class PostResource extends JsonResource
             "comments_count"=>$this->comments_count,
             "category"=>$this->category,
             "tag"=>$this->tag,
+            "comment"=>$this->comment
         ];
     }
 }
