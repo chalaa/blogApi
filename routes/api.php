@@ -4,6 +4,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CommentController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -45,3 +46,8 @@ Route::post("/category",[CategoryController::class,"store"]);
 Route::get("/post",[PostController::class,"index"]);
 Route::get("/post/{id}",[PostController::class,"show"]);
 Route::post("/post",[PostController::class,"store"]);
+
+//comment route
+
+Route::get("/comment/{id}",[CommentController::class, "index"]);
+Route::post("/comment",[CommentController::class, "store"]);
